@@ -1,0 +1,32 @@
+# Rescaling methods: FLEXIBLEAUTOEXT, FLEXIBLEAUTO, FIXEDAUTO, FIXEDMANUAL
+# Ring dimension: 4096, 8192, 16384, 32768, 65536, 131072, 262144
+# Security levels: HEStd_NotSet, HEStd_128_classic, HEStd_192_classic, HEStd_256_classic
+# Secret key distributions: UNIFORM_TERNARY, SPARSE_TERNARY, GAUSSIAN
+
+params:
+  64_first_mod: 60
+  64_scaling_mod_size: 59
+  64_rescale_method: FLEXIBLEAUTO
+
+  128_first_mod: 89
+  128_scaling_mod_size: 78
+  128_rescale_method: FIXEDAUTO
+
+  ring_dim: 131072
+  mult_depth: null
+  num_slots: null
+  security_level: HEStd_128_classic
+
+bootstrap_params:
+  run_bootstrap: true
+  level_budget: [2, 2]
+  secret_key_dist: SPARSE_TERNARY
+  num_iterations: 2
+  precision: 18
+
+features:
+  pke: true
+  keyswitch: true
+  leveledshe: true
+  advancedshe: true
+  fhe: true
