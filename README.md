@@ -1,5 +1,5 @@
 # ReBoot
-ReBoot is the first framework to enable fully encrypted and non-interactive training of Multi-Layer Perceptrons (MPLs) using CKKS bootstrapping.
+ReBoot is the first framework to enable fully encrypted and non-interactive training of Multi-Layer Perceptrons (MLPs) using CKKS bootstrapping.
 ReBoot has been introduced in the paper: ["ReBoot: Encrypted Training of Deep Neural Networks with CKKS Bootstrapping"](https://arxiv.org/abs/2506.19693), published in the '40th Annual AAAI Conference on Artificial Intelligence'.
 
 ## Requirements
