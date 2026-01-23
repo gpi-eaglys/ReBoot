@@ -1,4 +1,6 @@
 # ReBoot
+ReBoot is the first framework to enable fully encrypted and non-interactive training of Multi-Layer Perceptrons (MPLs) usint CKKS bootstrapping.
+ReBoot has been introduced in the paper: ["ReBoot: Encrypted Training of Deep Neural Networks with CKKS Bootstrapping"](https://arxiv.org/abs/2506.19693), published in the '40th Annual AAAI Conference on Artificial Intelligence'.
 
 ## Requirements
 
@@ -25,3 +27,9 @@ The worst-case multiplicative depth is represented.
 | 3 hidden layers  | 7       | 9        | 11      | 7                          |
 
 **Remark:** the use of **weight decay** or **momentum** in the optimizer does not increase the depth.
+
+## Authors and Contacts
+If you have questions, suggestions or problems, feel free to open an Issue.
+You can contact us at:
+- [Alberto Pirillo](https://github.com/albertopirillo): alberto.pirillo@mail.polimi.it
+- [Luca Colombo](https://github.com/lucacolombo97): luca2.colombo@polimi.it
