@@ -18,7 +18,6 @@ option(BUILD_PYTHON_BINDINGS
 option(BUILD_TESTS
         "Build tests for reboot extension module" ON)
 
-
 add_subdirectory(cpp/core)
 
 if(BUILD_TESTS)

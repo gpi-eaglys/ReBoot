@@ -1,30 +1,27 @@
 # ReBoot Digest
 * this is the digested version of the original ReBoot github project
 * changes 
-  * project structure refactoring
-  * source code refactoring
-  * explanations
-
+  * refactored project
+  * added Python packaging 
+  * added explanations
 
 
 ## TL;DR 
-* build the package in the repository dir
-```
-uv pip install -e .
-```
+* in the repository dir
+* build the package 
+  ```
+  uv pip install -e .
+  ```
 
 * test import 
-```python 
-* ```
+  ```
+  python -c "import reboot"
+  ```
 
 
 
-* 
 
-* processesing steps
-   * uv parses [pyproject.toml](pyproject.toml) 
-   * pip/build calls scikit_build_core's PEP 517 hooks
-   * scikit-build-core generates/configures a CMake build tree
+
 
 
 # ReBoot (original) 
@@ -45,7 +42,7 @@ It will install the OpenFHE and OpenFHE-Python libraries, along with the necessa
 
 ## Installing
 
-With OpenFHE and OpenFHE-Python already installed (via the devcontainer, or manually) and a `uv`-managed venv active in this repo:
+With OpenFHE and OpenFHE-Python already installed (via the devcontainer, or manually — see [doc/build.md](doc/build.md) for building OpenFHE-Python against a `uv` venv) and a `uv`-managed venv active in this repo:
 
 ```
 uv pip install -e .
