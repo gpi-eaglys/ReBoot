@@ -1,10 +1,10 @@
 OPENFHE_DIR ?= /opt/openfhe/v1.2.1/install/lib/OpenFHE
 NPROC := $(shell nproc)
 BUILD_TYPE ?= Debug
-BUILD_DIR := $(CURDIR)/cmake-build-$(shell echo $(BUILD_TYPE) | tr '[:upper:]' '[:lower:]')
+BUILD_DIR := $(CURDIR)/build/cmake-build-$(shell echo $(BUILD_TYPE) | tr '[:upper:]' '[:lower:]')
 GENERATOR ?= Ninja
 
-.PHONY: all lib build-tests tests tidy clean dep_openfhe
+.PHONY: all lib build-tests tests tidy clean dep_openfhe py
 
 all: tests
 
@@ -29,9 +29,9 @@ tidy: dep_openfhe
 	cmake -DOpenFHE_DIR="$(OPENFHE_DIR)" -DBUILD_PYTHON_BINDINGS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G "$(GENERATOR)" -S . -B "$(BUILD_DIR)"
 	run-clang-tidy -p "$(BUILD_DIR)" -j$(NPROC) -quiet 'cpp/(core|tests)/.*'
 
+py:
+	@echo "No Python target! Call: 'uv pip install -e .'"
+
 clean:
-	rm -rf "$(CURDIR)/cmake-build-"*
-
-
-
+	rm -rf "$(CURDIR)/build/cmake-build-"*
 

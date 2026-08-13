@@ -1,20 +1,23 @@
+print("top")
 import random
 import sys
 from typing import Any
 
+
+from reboot.parser import get_parser_args
+
+args = get_parser_args()
+print(args)
+
 import numpy as np
 import torch
 import wandb
-
-from torch.utils.data import DataLoader, TensorDataset
-
 from reboot.models.backprop_models import BackpropMLP
-from reboot.parser import get_parser_args
 from reboot.utils.data import load_float_dataset
 from reboot.utils.nn import accuracy
 from reboot.utils.train import epoch_log, wandb_init
 
-args = get_parser_args()
+from torch.utils.data import DataLoader, TensorDataset
 
 # Experiment config
 dataset_config = dict(
@@ -72,7 +75,7 @@ if __name__ == "__main__":
         set_seed(configs["seed"] + i)
         # Data
         X_train, _, X_test, y_train, _, y_test = load_float_dataset(
-            configs, show_images=False
+            configs, data_path=args.data_path, show_images=False
         )
 
         # Model

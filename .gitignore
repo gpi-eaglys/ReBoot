@@ -3,8 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
- cmake-build-debug/
- cmake-build-release/
 
 # C extensions
 *.so
@@ -171,9 +169,6 @@ data/
 # Wandb logs
 wandb/
 wandb_tags.txt
-
-# OpenFHE-Python source
-openfhe-python/
 
 # Others
 temp

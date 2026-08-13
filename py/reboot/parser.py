@@ -8,6 +8,7 @@ def get_parser_args() -> dict[str, Any]:
     parser = argparse.ArgumentParser()
     # Dataset arguments
     parser.add_argument("dataset", type=str, help=[dataset.name for dataset in Dataset])
+    parser.add_argument("--data-path", type=str, help="Path to the data folder")
     parser.add_argument("--subsample", type=int, default=None, help="Subsample the training dataset")
     parser.add_argument("--resize", type=int, default=None, help="Resize image datasets")
     # Network arguments

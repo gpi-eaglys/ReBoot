@@ -84,7 +84,7 @@ if __name__ == "__main__":
     # Data
     np.random.seed(configs["seed"])
     X_train, _, X_test, y_train, _, y_test = load_float_dataset(
-        configs, show_images=False
+        configs, data_path=args.data_path, show_images=False
     )
 
     # Network

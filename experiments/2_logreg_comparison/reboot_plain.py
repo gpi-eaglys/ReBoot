@@ -60,7 +60,7 @@ if __name__ == "__main__":
         print(f"{'-' * 80}\nRunning experiment with seed {args.seed + i}\n{'-' * 80}")
         # Data
         X_train, _, X_test, y_train, _, y_test = load_float_dataset(
-            configs, show_images=False
+            configs, data_path=args.data_path, show_images=False
         )
 
         # Keep only images belonging to class 3 and 8

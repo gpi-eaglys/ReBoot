@@ -20,7 +20,7 @@ from sklearn.datasets import make_classification
 
 
 def download_dataset(
-    config: dict, dataset: Dataset, pad_data: bool = True, data_path: str = "/data"
+    config: dict, dataset: Dataset, data_path: str, pad_data: bool = True
 ) -> tuple[
     tuple[NDArray[np.float32], NDArray[np.float32]],
     tuple[NDArray[np.float32], NDArray[np.float32]],
@@ -32,8 +32,8 @@ def download_dataset(
     Parameters:
         config (dict): A dictionary with the configuration parameters.
         dataset (Dataset): Enum representing dataset to be downloaded.
+        data_path (str): Path to the data folder.
         pad_data (bool, optional): Whether to add padding so that datasets with 28x28 images become 32x32. Defaults to True.
-        data_path (str, optional): Path to the data folder. If None, .data is used. Defaults to '/data'.
 
     Returns:
         tuple[tuple[NDArray[np.float32], NDArray[np.float32]], tuple[NDArray[np.float32], NDArray[np.float32]]]: A tuple containing the train dataset and the test dataset, further split into data and labels.
@@ -396,11 +396,11 @@ def normalize_channels(
 
 def load_float_dataset(
     config,
+    data_path: str,
     val_dim: int = 0,
     test_dim: int = 10_000,
     show_images: bool = True,
     show_log: bool = True,
-    data_path: str = "/data",
 ) -> tuple[
     NDArray[np.float32],
     NDArray[np.float32],
@@ -414,11 +414,11 @@ def load_float_dataset(
 
     Args:
         config (dict): A dictionary with the configuration parameters.
+        data_path (str): Path to the data folder.
         val_dim (int, optional): Desired size of the validation set. Defaults to 0.
         test_dim (int, optional): Desired size of the test set. Defaults to 10_000.
         show_images (bool, optional): Whether to display a sample of images from the training dataset. Defaults to True.
         show_log (bool, optional): Whether to print information about the dataset. Defaults to True.
-        data_path (str, optional): Path to the data folder. If None, .data is used. Defaults to '/data'.
 
     Returns:
         tuple[NDArray[np.float32], NDArray[np.float32], NDArray[np.float32], NDArray[np.float32], NDArray[np.float32], NDArray[np.float32]]:
@@ -436,11 +436,11 @@ def load_float_dataset(
 
 def _load_dataset(
     config: dict,
+    data_path: str,
     val_dim: int = 0,
     test_dim: int = 10_000,
     show_images: bool = True,
     show_log: bool = True,
-    data_path: str = "/data",
 ) -> tuple[
     NDArray[np.float32],
     NDArray[np.float32],
@@ -454,11 +454,11 @@ def _load_dataset(
 
     Args:
         config (dict): A dictionary with the configuration parameters.
+        data_path (str): Path to the data folder.
         val_dim (int, optional): Desired size of the validation set. Defaults to 0.
         test_dim (int, optional): Desired size of the test set. Defaults to 10_000.
         show_images (bool, optional): Whether to display a sample of images from the training dataset. Defaults to True.
         show_log (bool, optional): Whether to print information about the dataset. Defaults to True.
-        data_path (str, optional): Path to the data folder. If None, .data is used. Defaults to '/data'.
 
     Returns:
         tuple[NDArray[np.float32], NDArray[np.float32], NDArray[np.float32], NDArray[np.float32], NDArray[np.float32], NDArray[np.float32]]:

@@ -7,17 +7,24 @@
 
 
 ## TL;DR 
-* in the repository dir
-* build the package 
+* build the Python package (see [build doc](doc/build.md) for details)
   ```
   uv pip install -e .
   ```
 
-* test import 
+* test if `reboot` import works (must be in virtual environment)
   ```
+  source .venv/bin/activate
+  
   python -c "import reboot"
   ```
 
+
+* run sample MNIST experiment
+  ```
+  cd experiments/1_training_plain
+  ./run-sample-exp.sh
+  ```
 
 
 
