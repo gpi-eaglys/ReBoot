@@ -5,16 +5,14 @@ from typing import Any
 import numpy as np
 import wandb
 
-sys.path.append("/workspaces/ReBoot/")
-
-import reboot_cpp
-from lib.cryptocontext import CryptoContext
-from lib.models.local_loss_models import LocalLossMLP
-from lib.optim.schedulers import CosineLR
-from lib.parser import get_parser_args
-from lib.utils.data import load_float_dataset, shuffle_dataset
-from lib.utils.enums import NonLinearity, OptimizerName
-from lib.utils.train import (
+import reboot_py
+from reboot.cryptocontext import CryptoContext
+from reboot.models.local_loss_models import LocalLossMLP
+from reboot.optim.schedulers import CosineLR
+from reboot.parser import get_parser_args
+from reboot.utils.data import load_float_dataset, shuffle_dataset
+from reboot.utils.enums import NonLinearity, OptimizerName
+from reboot.utils.train import (
     batch_log,
     batch_wandb_log,
     compute_mean_weights,
@@ -74,8 +72,8 @@ if __name__ == "__main__":
 
     # W&B integration
     wandb_init(configs)
-    reboot_cpp.set_num_threads(os.cpu_count())
-    print(f"\nDetected {reboot_cpp.get_num_threads()} threads")
+    reboot_py.set_num_threads(os.cpu_count())
+    print(f"\nDetected {reboot_py.get_num_threads()} threads")
 
     # Data
     np.random.seed(configs["seed"])

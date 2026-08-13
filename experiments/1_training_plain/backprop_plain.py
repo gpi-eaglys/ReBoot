@@ -6,14 +6,13 @@ import numpy as np
 import torch
 import wandb
 
-sys.path.append("/workspaces/ReBoot/")
 from torch.utils.data import DataLoader, TensorDataset
 
-from lib.models.backprop_models import BackpropMLP
-from lib.parser import get_parser_args
-from lib.utils.data import load_float_dataset
-from lib.utils.nn import accuracy
-from lib.utils.train import epoch_log, wandb_init
+from reboot.models.backprop_models import BackpropMLP
+from reboot.parser import get_parser_args
+from reboot.utils.data import load_float_dataset
+from reboot.utils.nn import accuracy
+from reboot.utils.train import epoch_log, wandb_init
 
 args = get_parser_args()
 

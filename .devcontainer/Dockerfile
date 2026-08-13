@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-venv \
     sudo \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && apt-get clean && rm -rf /var/reboot/apt/lists/*
 
 # Install PyBind11
 RUN pip3 install "pybind11[global]"
@@ -28,7 +28,7 @@ RUN git clone --depth 1 --branch v1.2.1 https://github.com/openfheorg/openfhe-de
     && make -j$(nproc) \
     && make install
 
-# Assume that OpenFHE installs libraries into /usr/local/lib
+# Assume that OpenFHE installs libraries into /usr/local/reboot
 # Update LD_LIBRARY_PATH to include this directory
 ENV LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 

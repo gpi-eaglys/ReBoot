@@ -4,14 +4,14 @@ from typing import Any
 import numpy as np
 import wandb
 
-sys.path.append("/workspaces/ReBoot/")
+# sys.path.append("/workspaces/ReBoot/")
 
-from lib.models.local_loss_models import LocalLossMLP
-from lib.optim.schedulers import CosineLR
-from lib.parser import get_parser_args
-from lib.utils.data import load_float_dataset, shuffle_dataset
-from lib.utils.enums import NonLinearity, OptimizerName
-from lib.utils.train import (
+from reboot.models.local_loss_models import LocalLossMLP
+from reboot.optim.schedulers import CosineLR
+from reboot.parser import get_parser_args
+from reboot.utils.data import load_float_dataset, shuffle_dataset
+from reboot.utils.enums import NonLinearity, OptimizerName
+from reboot.utils.train import (
     epoch_log,
     train_step_plain,
     validation_plain,

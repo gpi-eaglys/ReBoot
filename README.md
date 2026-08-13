@@ -1,4 +1,33 @@
-# ReBoot
+# ReBoot Digest
+* this is the digested version of the original ReBoot github project
+* changes 
+  * project structure refactoring
+  * source code refactoring
+  * explanations
+
+
+
+## TL;DR 
+* build the package in the repository dir
+```
+uv pip install -e .
+```
+
+* test import 
+```python 
+* ```
+
+
+
+* 
+
+* processesing steps
+   * uv parses [pyproject.toml](pyproject.toml) 
+   * pip/build calls scikit_build_core's PEP 517 hooks
+   * scikit-build-core generates/configures a CMake build tree
+
+
+# ReBoot (original) 
 ReBoot is the first framework to enable fully encrypted and non-interactive training of Multi-Layer Perceptrons (MLPs) using CKKS bootstrapping.
 ReBoot has been introduced in the paper: ["ReBoot: Encrypted Training of Deep Neural Networks with CKKS Bootstrapping"](https://arxiv.org/abs/2506.19693), published in the '40th Annual AAAI Conference on Artificial Intelligence'.
 
@@ -13,6 +42,24 @@ ReBoot was developed and tested with:
 Use the provided `.devcontainer` files to spin up a VSCode DevContainer with the library correctly installed.
 
 It will install the OpenFHE and OpenFHE-Python libraries, along with the necessary dependencies to run ReBoot.
+
+## Installing
+
+With OpenFHE and OpenFHE-Python already installed (via the devcontainer, or manually) and a `uv`-managed venv active in this repo:
+
+```
+uv pip install -e .
+```
+
+This builds `reboot_core`/`reboot_py` via CMake and installs the `reboot` Python package plus the compiled `reboot_py` extension into `.venv`, both importable from anywhere the venv is active.
+
+If OpenFHE isn't installed at the default location, forward it via `CMAKE_ARGS`, which `scikit-build-core` (the build backend) picks up automatically:
+
+```
+CMAKE_ARGS="-DOpenFHE_DIR=/path/to/OpenFHE" uv pip install -e .
+```
+
+For pure C++ development (building `reboot_core`/tests without going through the Python packaging), see the `Makefile` (`make lib`, `make tests`).
 
 ## Multiplicative depth
 

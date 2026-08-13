@@ -1,0 +1,48 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11>=2.12"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "reboot"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy==2.0.0",
+    "pyyaml==6.0.1",
+    "scikit-learn==1.5.2",
+    "ucimlrepo==0.0.7",
+    "imbalanced-learn==0.12.4",
+    "pandas",
+    "torch",
+    "torchvision",
+]
+# Note: the official OpenFHE Python bindings ("openfhe") are deliberately NOT
+# listed here. This project builds them from a local source checkout against
+# the exact OpenFHE C++ install (see .devcontainer/after_creation.sh) — they
+# must already be installed in the venv before `uv pip install -e .` runs.
+
+[project.optional-dependencies]
+dev = [
+    "jupyter==1.0.0",
+    "ipykernel==6.29.4",
+    "matplotlib==3.8.4",
+    "seaborn==0.13.2",
+    "wandb==0.17.3",
+    "palettable==3.3.3",
+]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu" }]
+torchvision = [{ index = "pytorch-cpu" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.scikit-build]
+wheel.packages = ["py/reboot"]
+
+[tool.scikit-build.cmake.define]
+BUILD_TESTS = "OFF"
+BUILD_PYTHON_BINDINGS = "ON"
