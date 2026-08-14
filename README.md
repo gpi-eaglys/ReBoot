@@ -7,14 +7,16 @@
 
 
 ## Build 
-* pull in dependencies: openFHE, openFHE-lib
+* pull in openFHE and build it
 ``` 
 git submodule update --init --recursive
+make py-openfhe
 ```
 
 * build the Python package (see [build doc](doc/build.md) for details)
   ```
   uv venv
+  uv sync
   uv pip install -e .
   ```
 
@@ -28,8 +30,7 @@ git submodule update --init --recursive
 
 * run sample MNIST experiment
   ```
-  cd experiments/1_training_plain
-  ./run-sample-exp.sh
+  experiments/1_training_plain/run-sample-exp.sh
   ```
 
 

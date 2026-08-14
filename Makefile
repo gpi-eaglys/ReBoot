@@ -29,6 +29,8 @@ build-tests: dep_openfhe
 	cmake --build "$(BUILD_DIR)" -j$(NPROC) --target reboot_core_tests
 
 tests: build-tests
+	# only runs the built tests:
+	@echo "[INFO] Running tests"
 	ctest --test-dir "$(BUILD_DIR)" --output-on-failure
 
 tidy: dep_openfhe
@@ -44,7 +46,8 @@ py-openfhe: lib
 	@echo "[INFO] Build & install the official openFHE Python bindings to: extern/openfhe-python"
 	@test -x .venv/bin/python || { echo "error: create the venv first (uv venv)" >&2; exit 1; }
 	$(eval PYBIND11_DIR := $(shell .venv/bin/python -m pybind11 --cmakedir))
-	CMAKE_PREFIX_PATH="$(CURDIR)/build/extern/openfhe-development-install/lib/OpenFHE:$(PYBIND11_DIR)" \
+	$(eval OPENFHE_ACTUAL_DIR := $(shell grep '^OpenFHE_DIR:' "$(BUILD_DIR)/CMakeCache.txt" | cut -d= -f2))
+	CMAKE_PREFIX_PATH="$(OPENFHE_ACTUAL_DIR):$(PYBIND11_DIR)" \
 	  uv pip install -e ./extern/openfhe-python --python .venv/bin/python
 
 clean:
