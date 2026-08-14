@@ -9,6 +9,7 @@
 ## TL;DR 
 * build the Python package (see [build doc](doc/build.md) for details)
   ```
+  uv venv
   uv pip install -e .
   ```
 
@@ -27,6 +28,17 @@
   ```
 
 
+## Project structure 
+
+``` 
+ReBoot
+├── build        # build artifacts - not checked into git
+├── cpp          # all CPP code
+├── doc          # documentation
+├── experiments  # experiments for the publication
+├── extern       # external dependencies/submodules 
+└── py           # Python source code
+```
 
 
 
@@ -43,27 +55,37 @@ ReBoot was developed and tested with:
 - **OpenFHE:** 1.2.1
 - **OpenFHE-Python:** 0.8.9
 
-Use the provided `.devcontainer` files to spin up a VSCode DevContainer with the library correctly installed.
-
-It will install the OpenFHE and OpenFHE-Python libraries, along with the necessary dependencies to run ReBoot.
+OpenFHE and OpenFHE-Python are vendored as git submodules under `extern/` and
+built automatically if no system install is found (see
+[doc/build.md](doc/build.md)), so no local OpenFHE install is required to
+build this repo. Alternatively, use the provided `.devcontainer` files to spin
+up a VSCode DevContainer with the library pre-installed system-wide.
 
 ## Installing
 
-With OpenFHE and OpenFHE-Python already installed (via the devcontainer, or manually — see [doc/build.md](doc/build.md) for building OpenFHE-Python against a `uv` venv) and a `uv`-managed venv active in this repo:
+Check out the vendored submodules once:
+
+```
+git submodule update --init --recursive
+```
+
+Then, with a `uv`-managed venv active in this repo:
 
 ```
 uv pip install -e .
 ```
 
-This builds `reboot_core`/`reboot_py` via CMake and installs the `reboot` Python package plus the compiled `reboot_py` extension into `.venv`, both importable from anywhere the venv is active.
+This builds `reboot_core`/`reboot_py` via CMake and installs the `reboot` Python package plus the compiled `reboot_py` extension into `.venv`, both importable from anywhere the venv is active. If no system OpenFHE is found, CMake builds it from `extern/openfhe-development` first (only once — this can take a while the first time).
 
-If OpenFHE isn't installed at the default location, forward it via `CMAKE_ARGS`, which `scikit-build-core` (the build backend) picks up automatically:
+If OpenFHE is (or should be) installed elsewhere, forward it via `CMAKE_ARGS`, which `scikit-build-core` (the build backend) picks up automatically:
 
 ```
 CMAKE_ARGS="-DOpenFHE_DIR=/path/to/OpenFHE" uv pip install -e .
 ```
 
 For pure C++ development (building `reboot_core`/tests without going through the Python packaging), see the `Makefile` (`make lib`, `make tests`).
+
+The official `openfhe` Python bindings (used by `reboot.cryptocontext`) are a separate build, from the `extern/openfhe-python` submodule — see [doc/build.md](doc/build.md) or run `make py-openfhe`.
 
 ## Multiplicative depth
 

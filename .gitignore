@@ -173,3 +173,4 @@ wandb_tags.txt
 # Others
 temp
 .*
+!.gitmodules
