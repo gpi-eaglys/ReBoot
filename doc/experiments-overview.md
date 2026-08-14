@@ -1,4 +1,17 @@
-# Overview of training 
+# Overview of Experiments 
+
+
+## Scripts at a glance
+
+| Prefix | Directory | Plain / Encrypted | Dataset scope | Purpose |
+|--------|---|---|---|---|
+| **1_** | `1_training_plain` | Plain only | Full dataset, all classes | Baselines — plain PyTorch backprop vs. ReBoot's own local-loss algorithm, isolating the *algorithm* change from encryption entirely |
+| **2_** | `2_logreg_comparison` | Both (plain + encrypted, side-by-side per batch) | Binary subset (2 classes) | First plain-vs-encrypted cross-check, on a simplified binary logistic-regression-style task |
+| **3_** | `3_training_encrypted` | Both, and encrypted-only | Full dataset, all classes | Generalizes the cross-check to multi-class, adds CKKS-packing-specific diagnostics, and includes the actual real end-to-end encrypted training run (no plaintext shadow model) |
+| **4_** | `4_performance_analysis` | Encrypted only | Full dataset | Not about accuracy — measures wall-clock time per stage (model/data encryption, forward, backward, bootstrap) |
+
+The progression is roughly: **1** proves the algorithm works in plaintext → **2** proves plain-vs-encrypted agree on an easy binary case → **3** proves it on the full multi-class task and runs it for real → **4** measures how fast it actually runs.
+
 
 ## Scripts at a glance
 

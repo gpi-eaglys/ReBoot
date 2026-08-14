@@ -16,11 +16,13 @@ git submodule update --init --recursive
   ```
   uv venv
   uv sync
-  uv pip install -e .
+  uv pip install -e . -v
   ```
 
 
+* needs to build py-openfhe
 ``` 
+uv pip install --python .venv/bin/python "pybind11>=2.12
 make py-openfhe
 ```
 
