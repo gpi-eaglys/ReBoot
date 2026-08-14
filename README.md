@@ -6,7 +6,12 @@
   * added explanations
 
 
-## TL;DR 
+## Build 
+* pull in dependencies: openFHE, openFHE-lib
+``` 
+git submodule update --init --recursive
+```
+
 * build the Python package (see [build doc](doc/build.md) for details)
   ```
   uv venv

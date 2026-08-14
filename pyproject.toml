@@ -15,11 +15,16 @@ dependencies = [
     "pandas",
     "torch",
     "torchvision",
+    "wandb==0.17.3",
 ]
 # Note: the official OpenFHE Python bindings ("openfhe") are deliberately NOT
 # listed here. This project builds them from a local source checkout against
 # the exact OpenFHE C++ install (see .devcontainer/after_creation.sh) — they
 # must already be installed in the venv before `uv pip install -e .` runs.
+#
+# wandb is a core dependency (not a dev extra) because py/reboot/utils/train.py
+# and the experiments import it unconditionally at module level, gating only
+# its *usage* behind a runtime `config["wandb"]` flag.
 
 [project.optional-dependencies]
 dev = [
@@ -27,7 +32,6 @@ dev = [
     "ipykernel==6.29.4",
     "matplotlib==3.8.4",
     "seaborn==0.13.2",
-    "wandb==0.17.3",
     "palettable==3.3.3",
 ]
 
