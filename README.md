@@ -1,18 +1,21 @@
 # ReBoot Digest
-* this is the digested version of the original ReBoot github project
-* changes 
-  * refactored project
+* this is a digested version of the original [ReBoot GitHub repository](https://github.com/albertopirillo/ReBoot)
+* Article: \
+ _Pirillo & Colombo (2025). ReBoot: Encrypted Training of Deep Neural Networks with CKKS bootstrapping._ \
+  [[arxiv link](https://arxiv.org/abs/2506.19693)], [[local pdf](doc/pdf/Pirillo.Colombo--2025--ReBoot%3DEncrypted.training.of.DNN.withCKKS.bootstrapping.pdf)]
+* changes:
+  * refactored build mechanism, removed containerization
   * added Python packaging 
   * added explanations
 
 
 ## Build 
-* pull in openFHE and build it
+* pull in openFHE as submodule
 ``` 
 git submodule update --init --recursive
 ```
 
-* build the Python package (see [build doc](doc/build.md) for details)
+* build the Python package for ReBuild (see [build doc](doc/build.md) for details)
   ```
   uv venv
   uv sync
@@ -20,7 +23,7 @@ git submodule update --init --recursive
   ```
 
 
-* needs to build py-openfhe
+* build _py-openfhe_
 ``` 
 uv pip install --python .venv/bin/python "pybind11>=2.12
 make py-openfhe
