@@ -45,6 +45,9 @@ py:
 py-openfhe: lib
 	@echo "[INFO] Build & install the official openFHE Python bindings to: extern/openfhe-python"
 	@test -x .venv/bin/python || { echo "error: create the venv first (uv venv)" >&2; exit 1; }
+	# pybind11 is only a build-system requirement of pyproject.toml (isolated build env),
+	# not guaranteed to be importable from .venv itself - ensure it's actually there.
+	uv pip install --python .venv/bin/python "pybind11>=2.12"
 	$(eval PYBIND11_DIR := $(shell .venv/bin/python -m pybind11 --cmakedir))
 	$(eval OPENFHE_ACTUAL_DIR := $(shell grep '^OpenFHE_DIR:' "$(BUILD_DIR)/CMakeCache.txt" | cut -d= -f2))
 	CMAKE_PREFIX_PATH="$(OPENFHE_ACTUAL_DIR):$(PYBIND11_DIR)" \

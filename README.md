@@ -10,7 +10,6 @@
 * pull in openFHE and build it
 ``` 
 git submodule update --init --recursive
-make py-openfhe
 ```
 
 * build the Python package (see [build doc](doc/build.md) for details)
@@ -19,6 +18,11 @@ make py-openfhe
   uv sync
   uv pip install -e .
   ```
+
+
+``` 
+make py-openfhe
+```
 
 * test if `reboot` import works (must be in virtual environment)
   ```
