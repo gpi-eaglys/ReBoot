@@ -20,6 +20,7 @@ init_reboot_experiment_paths() {
     script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     export EXP_ROOT=$(realpath "${script_dir}/..")
     export EXP_DATA_DIR=$(realpath "${EXP_ROOT}/data")
+    export EXP_CONF_DIR=$(realpath "${EXP_ROOT}/config")
 
     # reboot_py's baked-in RPATH doesn't always resolve OpenFHE's shared libs
     # at runtime (see doc/build.md) - add whichever OpenFHE this repo actually
@@ -37,6 +38,8 @@ init_reboot_experiment_paths() {
         fi
     fi
 }
+
+
 
 init_reboot_experiment_paths
 unset -f init_reboot_experiment_paths _reboot_prepend_lib_dir

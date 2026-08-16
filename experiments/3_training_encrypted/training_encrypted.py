@@ -39,6 +39,7 @@ dataset_config = dict(
 )
 
 network_config = dict(
+    config_dir=args.config_dir,
     num_fc_layers=args.num_layers,
     num_fc_hidden=args.num_hidden,
     non_linearity=NonLinearity.POLY_RELU.name,
@@ -59,7 +60,7 @@ training_config = dict(
     fwd_decay=args.weight_decay,
     lrn_decay=args.weight_decay,
     momentum=0.9,
-    optimizer=OptimizerName.ENCRYPTED_NESTEROV_SGD,
+    optimizer=OptimizerName.ENCRYPTED_NESTEROV_SGD.name,
     wandb=False,
 )
 
@@ -104,8 +105,10 @@ if __name__ == "__main__":
     )
 
     # Encryption
-    file_path = f"fhe_config_mlp{args.num_layers - 1}.yaml"
-    cc = CryptoContext(f"../config/{file_path}", model=plain_model)
+    fname_yaml = f"fhe_config_mlp{args.num_layers - 1}.yaml"
+    fpath_yaml = os.path.join(configs["config_dir"], fname_yaml)
+    # f"../config/{file_path}"
+    cc = CryptoContext(fpath_yaml, model=plain_model)
 
     np.random.seed(configs["seed"])
     encrypted_model = LocalLossMLP(

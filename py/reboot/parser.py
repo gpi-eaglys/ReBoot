@@ -8,10 +8,11 @@ def get_parser_args() -> dict[str, Any]:
     parser = argparse.ArgumentParser()
     # Dataset arguments
     parser.add_argument("dataset", type=str, help=[dataset.name for dataset in Dataset])
-    parser.add_argument("--data-path", type=str, help="Path to the data folder")
+    parser.add_argument("--data-path", type=str, help="Path to the data directory")
     parser.add_argument("--subsample", type=int, default=None, help="Subsample the training dataset")
     parser.add_argument("--resize", type=int, default=None, help="Resize image datasets")
     # Network arguments
+    parser.add_argument("--config-dir", type=str, help="Path to FHE config directory")
     parser.add_argument("--num-layers", type=int, default=2, help="Number of fully connected layers")
     parser.add_argument("--num-hidden", type=int, nargs="*", default=[32], help="Number of hidden units per layer")
     parser.add_argument("--batch-size", type=int, default=48, help="Batch size")
