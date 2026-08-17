@@ -25,4 +25,5 @@ def get_parser_args() -> dict[str, Any]:
     # Run arguments
     parser.add_argument("--seed", type=int, default=0, help="Random seed")
     parser.add_argument("--num-runs", type=int, default=1, help="Number of runs")
+    parser.add_argument("--cpu-counts", type=int, default=8, help="Number of CPUs to run. If set to non-positive value, it uses every available core")
     return parser.parse_args()

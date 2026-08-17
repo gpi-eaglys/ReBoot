@@ -62,18 +62,29 @@ training_config = dict(
     momentum=0.9,
     optimizer=OptimizerName.ENCRYPTED_NESTEROV_SGD.name,
     wandb=False,
+    cpu_counts=args.cpu_counts
 )
 
 configs: dict[str, Any] = dataset_config | network_config | training_config
 
 
 if __name__ == "__main__":
+    print("Configuration:", configs)
+    print("-"*79)
+    for k, v in configs.items():
+        print(f"-- {k}\t{v}")
+    print("-"*79)
+
     # Setup reproducibility
     np.random.seed(configs["seed"])
 
     # W&B integration
     wandb_init(configs)
-    reboot_py.set_num_threads(os.cpu_count())
+    # if cpu_counts > 0
+    if configs["cpu_counts"] > 0:
+        reboot_py.set_num_threads(configs["cpu_counts"])
+    else:
+        reboot_py.set_num_threads(os.cpu_count())
     print(f"\nDetected {reboot_py.get_num_threads()} threads")
 
     # Data
@@ -107,7 +118,6 @@ if __name__ == "__main__":
     # Encryption
     fname_yaml = f"fhe_config_mlp{args.num_layers - 1}.yaml"
     fpath_yaml = os.path.join(configs["config_dir"], fname_yaml)
-    # f"../config/{file_path}"
     cc = CryptoContext(fpath_yaml, model=plain_model)
 
     np.random.seed(configs["seed"])
