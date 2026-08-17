@@ -30,17 +30,16 @@ ReBoot has been introduced in the paper: ["ReBoot: Encrypted Training of Deep Ne
 
 
 * build _py-openfhe_
-  <div style="background-color:#3f1414; border-left: 6px solid #ff4d4d; color:#ffcccc; padding: 10px 16px; margin: 8px 0;">
-  <strong style="color:#ff6666;">⚠ WARNING:</strong> Do NOT call <code>uv sync</code> after this step. 
-  It removes package <code>openfhe</code> as it is not declared (on purpuse) in <code>pyproject.toml</code>. 
-  See <a href="doc/build.md">doc/build.md</a> for details.
-  Re-run <code>make py-openfhe</code> after every <code>uv sync</code>.
-  </div>
-  
     ``` 
     uv pip install --python .venv/bin/python "pybind11>=2.12
     make py-openfhe
     ```
+    > [!WARNING]
+    > Do NOT call `uv sync` after this step.
+    > It removes package `openfhe` as it is not declared (on purpose) in `pyproject.toml`.
+    > See [doc/build.md](doc/build.md) for details.
+    > Re-run `make py-openfhe` after every `uv sync`.
+  
 
 
 * test if `reboot` import works (must be in the virtual environment)
