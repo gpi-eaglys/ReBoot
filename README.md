@@ -1,11 +1,10 @@
 # ReBoot Digest
 
 ReBoot is the first framework to enable fully encrypted and non-interactive training of Multi-Layer Perceptrons (MLPs) using CKKS bootstrapping.
-ReBoot has been introduced in the paper: ["ReBoot: Encrypted Training of Deep Neural Networks with CKKS Bootstrapping"](https://arxiv.org/abs/2506.19693).
-
+ReBoot has been introduced in the paper: 
+* _Pirillo & Colombo (2025)._ "[ReBoot: Encrypted Training of Deep Neural Networks with CKKS Bootstrapping](https://arxiv.org/abs/2506.19693)", 
+[[direct PDF link](https://arxiv.org/abs/2506.19693)], [[local pdf](doc/pdf/Pirillo.Colombo--2025--ReBoot%3DEncrypted.training.of.DNN.withCKKS.bootstrapping.pdf)]
 * this is a digested version of the original [ReBoot GitHub repository](https://github.com/albertopirillo/ReBoot)
-*  _Pirillo & Colombo (2025)._ **ReBoot** _: Encrypted Training of Deep Neural Networks with CKKS bootstrapping._ 
-  [[arxiv link](https://arxiv.org/abs/2506.19693)], [[local pdf](doc/pdf/Pirillo.Colombo--2025--ReBoot%3DEncrypted.training.of.DNN.withCKKS.bootstrapping.pdf)]
 
 ![article-figure-01.png](doc/figures/article-figure-01.png)
 
