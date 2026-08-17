@@ -16,7 +16,6 @@ python3 training_encrypted.py MNIST  \
         --lr 1e-3 --weight-decay 1e-3 --num-runs 10  \
         --data-path "${EXP_DATA_DIR}"  \
         --cpu-count 1 \
-        --config-dir "${EXP_CONF_DIR}" \
-        > training_encrypted.log 2>&1
+        --config-dir "${EXP_CONF_DIR}" 
 
 popd
